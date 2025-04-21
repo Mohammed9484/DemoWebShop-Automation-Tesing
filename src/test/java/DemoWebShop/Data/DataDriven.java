@@ -16,7 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class DataDriven {
 	public List<List<String>> getData(String testCaseName) throws IOException {
 	    List<List<String>> allData = new ArrayList<>();
-	    FileInputStream file = new FileInputStream("E:\\ITI Testing\\Automation Project\\Book1.xlsx");
+	    FileInputStream file = new FileInputStream("E:\\ITI Testing\\Automation Project\\DemoWebShop\\DataDriven.xlsx");
 	    XSSFWorkbook workBook = new XSSFWorkbook(file);
 
 	    try {

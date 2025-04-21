@@ -23,7 +23,7 @@ public class CartTests extends BaseTest {
         Assert.assertEquals(productPage.getConfirmationAddToCartMessage(), "The product has been added to your shopping cart");
         ShoppingCart shoppingCart = homePage.goToShoppingCart();
         Assert.assertEquals(shoppingCart.checkProductAdded(productName), productName);
-        CheckOutPage checkOutPage = shoppingCart.checkOut();
+        shoppingCart.checkOut();
         //the following assertion works only when user is logged in
         // Assert.assertEquals(checkOutPage.confirm(), "Checkout");
     }
@@ -35,7 +35,7 @@ public class CartTests extends BaseTest {
         Assert.assertEquals(productPage.getConfirmationAddToCartMessage(), "The product has been added to your shopping cart");
         ShoppingCart shoppingCart = homePage.goToShoppingCart();
         Assert.assertEquals(shoppingCart.checkProductAdded(productName), productName);
-        CheckOutPage checkOutPage = shoppingCart.checkOutWithoutTermsButton();
+        shoppingCart.checkOutWithoutTermsButton();
         Assert.assertEquals(shoppingCart.getErrorMessage(), "Please accept the terms of service before the next step.");
 
 //System.out.println(shoppingCart.getErrorMessage());
@@ -46,7 +46,7 @@ public class CartTests extends BaseTest {
     public void verifyCheckOutWithEmptyShoppingCart(String productName) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         ShoppingCart shoppingCart = homePage.goToShoppingCart();
-        Assert.assertEquals(shoppingCart.getEptyCartMessage(), "Your Shopping Cart is empty!");
+        Assert.assertEquals(shoppingCart.getEmptyCartMessage(), "Your Shopping Cart is empty!");
 
 
     }

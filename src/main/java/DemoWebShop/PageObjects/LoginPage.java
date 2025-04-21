@@ -1,6 +1,7 @@
 package DemoWebShop.PageObjects;
 
 import WebShop.AbstractComponents.AbstractComponent;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -33,6 +34,11 @@ public class LoginPage extends AbstractComponent {
 		userEmail.sendKeys(email);
 		userPassword.sendKeys(password);
 		logInButton.click();
+
+	}
+	public void logOut() {
+		waitForElementToAppear(By.xpath("(//a[normalize-space()='Log out'])[1]"));
+		driver.findElement(By.xpath("(//a[normalize-space()='Log out'])[1]")).click();
 
 	}
 

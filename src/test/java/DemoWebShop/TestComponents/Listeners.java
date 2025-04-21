@@ -15,8 +15,16 @@ import DemoWebShop.Resources.ExtentReporterNG;
 
 public class Listeners extends BaseTest implements ITestListener {
 	ExtentTest test;
-	ExtentReports extent = ExtentReporterNG.getReportObject();
-	ThreadLocal<ExtentTest> extentTest= new ThreadLocal<ExtentTest>();
+	ExtentReports extent;
+	ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+	String suiteName;
+
+	@Override
+	public void onStart(ITestContext context) {
+		 suiteName = context.getCurrentXmlTest().getSuite().getName();
+		extent = ExtentReporterNG.getReportObject(suiteName);
+	}
+
 	@Override
 	public void onTestStart(ITestResult result) {
 		test = extent.createTest(result.getMethod().getMethodName());
@@ -38,7 +46,7 @@ public class Listeners extends BaseTest implements ITestListener {
 			e.printStackTrace();
 		}
 		try {
-			filePath = getScreenshot(result.getMethod().getMethodName(), driver);
+			filePath = getScreenshot(result.getMethod().getMethodName(), driver,suiteName);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

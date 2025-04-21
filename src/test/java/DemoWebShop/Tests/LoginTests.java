@@ -23,6 +23,7 @@ public class LoginTests extends BaseTest {
         LoginPage loginPage = homePage.goToLogin();
         loginPage.loginApplication(email, password);
         Assert.assertEquals(loginPage.getID(), email);
+        loginPage.logOut();
     }
 
     //Test case2: Verify Login with unregisterd email

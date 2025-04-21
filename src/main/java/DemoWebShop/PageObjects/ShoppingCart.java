@@ -42,21 +42,21 @@ public class ShoppingCart extends AbstractComponent {
         }
     }
 
-    public CheckOutPage checkOut() {
+    public void checkOut() {
         waitForWebElementToAppear(checkOutButton);
         termsButton.click();
         checkOutButton.click();
-        return new CheckOutPage(driver);
+
     }
-    public CheckOutPage checkOutWithoutTermsButton() {
+    public void checkOutWithoutTermsButton() {
         waitForWebElementToAppear(checkOutButton);
         checkOutButton.click();
-        return new CheckOutPage(driver);
+
     }
     public String getErrorMessage(){
         return errorMessage.getText();
     }
-    public String getEptyCartMessage(){
+    public String getEmptyCartMessage(){
         return emptyCartMessage.getText();
     }
 

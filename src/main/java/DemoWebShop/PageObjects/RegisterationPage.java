@@ -53,6 +53,8 @@ public class RegisterationPage extends AbstractComponent {
 	WebElement passwordErrorMessage;
 	@FindBy(xpath = "//span[@for='ConfirmPassword']")
 	WebElement confirmPasswordErrorMessage;
+	@FindBy(xpath = "//a[@class='ico-logout']")
+	WebElement logOutButton;
 
 	public void registerApplication(String gender, String firstName, String lastName, String email, String password) {
 		if (gender.equalsIgnoreCase("male")) {
@@ -67,6 +69,12 @@ public class RegisterationPage extends AbstractComponent {
 		registerButton.click();
 
 		// continueButton.click();
+	}
+
+	public void logOut() {
+		waitForWebElementToAppear(logOutButton);
+		logOutButton.click();
+
 	}
 
 	public String getID() {

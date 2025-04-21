@@ -50,6 +50,8 @@ public class HomePage extends AbstractComponent {
     WebElement toastMessage;
     @FindBy(xpath = "(//span[@class='cart-label'])[1]")
     WebElement shoppingCartHeader;
+    @FindBy(css = "a[href='/customer/orders']")
+    WebElement ordersFooter;
 
     By addToCart = By.xpath(".//input[@value='Add to cart']");
 
@@ -71,6 +73,11 @@ public class HomePage extends AbstractComponent {
         js.executeScript("window.scrollTo(0, 0);");
         shoppingCartHeader.click();
         return new ShoppingCart(driver);
+
+    }
+    public OrdersPage goToOrders() {
+        ordersFooter.click();
+        return new OrdersPage(driver);
 
     }
 

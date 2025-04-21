@@ -14,13 +14,10 @@ import DemoWebShop.TestComponents.BaseTest;
 
 public class RegistrationTests extends BaseTest {
 
-	public static String email1 = "testuser@example.com";
 	// json data HashMap<String, String> input getDataJson
 	// excel String param1, String param2, String param3 getDataExcel
 	@Test(dataProvider = "validRegister", enabled = true, priority = 1)
 	public void validRegister(String gender, String firstName, String lastName, String email, String password) {
-	email1=email;
-
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		RegisterationPage registerationPage = homePage.goToRegisteration();
 		registerationPage.registerApplication(gender, firstName, lastName, email, password);

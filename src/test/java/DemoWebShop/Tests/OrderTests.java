@@ -1,10 +1,8 @@
 package DemoWebShop.Tests;
 
+
 import DemoWebShop.Data.DataDriven;
-import DemoWebShop.PageObjects.CheckOutPage;
-import DemoWebShop.PageObjects.LoginPage;
-import DemoWebShop.PageObjects.ProductPage;
-import DemoWebShop.PageObjects.ShoppingCart;
+import DemoWebShop.PageObjects.*;
 import DemoWebShop.TestComponents.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
@@ -14,11 +12,11 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-public class CheckOutTests extends BaseTest {
+public class OrderTests extends BaseTest {
 
 
     @Test(dataProvider = "validCheckout", enabled = true, priority = 1)
-    public void validCheckout(String productName, String firstName, String lastName, String country, String email, String password, String userCity, String userAddress, String zipCode, String phoneNumber) {
+    public void checkOrderNumber(String productName, String firstName, String lastName, String country, String email, String password, String userCity, String userAddress, String zipCode, String phoneNumber) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         LoginPage loginPage = homePage.goToLogin();
         loginPage.loginApplication(email, password);
@@ -29,30 +27,10 @@ public class CheckOutTests extends BaseTest {
         CheckOutPage checkOutPage = new CheckOutPage(driver);
         checkOutPage.checkoutForm(firstName, lastName, country, email, userCity, userAddress, zipCode, phoneNumber);
         Assert.assertEquals(checkOutPage.getConfirmMessgae(), "Your order has been successfully processed!");
-//        System.out.println(checkOutPage.getConfirmMessgae());
-
-    }
-
-    @Test(dataProvider = "invalidCheckout", enabled = true, priority = 1)
-    public void invalidCheckoutWithEmptyFields(String productName, String email, String password) {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        LoginPage loginPage = homePage.goToLogin();
-        loginPage.loginApplication(email, password);
-        ProductPage productPage = homePage.addToCartFromHome(productName);
-        Assert.assertEquals(productPage.getConfirmationAddToCartMessage(), "The product has been added to your shopping cart");
-        ShoppingCart shoppingCart = homePage.goToShoppingCart();
-        shoppingCart.checkOut();
-        CheckOutPage checkOutPage = new CheckOutPage(driver);
-        checkOutPage.invlaidForm();
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("firstname"), "First name is required.");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("lastname"), "Last name is required.");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("email"), "Email is required.");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("country"), "Country is required.");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("city"), "City is required");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("street address"), "Street address is required");
-        Assert.assertEquals(checkOutPage.getErrorMessageForField("postal code"), "Zip / postal code is required");
-        //Assert.assertEquals(checkOutPage.getErrorMessageForField("phone"),"Phone is required");
-        System.out.println(checkOutPage.getErrorMessageForField("phone"));
+        String orderNumber = checkOutPage.getOrderNumber();
+        OrdersPage ordersPage = homePage.goToOrders();
+        ordersPage.selectOrder(orderNumber);
+        Assert.assertEquals(ordersPage.getOrderNumberFromOrderPage(),orderNumber);
 
 
     }

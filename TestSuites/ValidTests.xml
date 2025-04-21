@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Valid Tests">
+
+    <listeners>
+        <listener class-name="DemoWebShop.TestComponents.Listeners"/>
+    </listeners>
+
+    <test thread-count="2" parallel="classes" name="Valid Tests">
+        <classes>
+            <class name="DemoWebShop.Tests.RegistrationTests">
+                <methods>
+                    <include name="validRegister"/>
+                </methods>
+            </class>
+                  <class name="DemoWebShop.Tests.LoginTests">
+                    <methods>
+                      <include name="validLogin"/>
+                    </methods>
+                  </class>
+                  <class name="DemoWebShop.Tests.SearchTests">
+                    <methods>
+                      <include name="validSearch"/>
+                    </methods>
+                  </class>
+                  <class name="DemoWebShop.Tests.AddToCartTests">
+                    <methods>
+                      <include name="addToCartFunctionalitiy"/>
+                      <include name="searchAndAddToCart"/>
+                    </methods>
+                  </class>
+                  <class name="DemoWebShop.Tests.CartTests">
+                    <methods>
+                      <include name="verifyCheckOutFunctionality"/>
+                    </methods>
+                  </class>
+                  <class name="DemoWebShop.Tests.CheckOutTests">
+                    <methods>
+                      <include name="validCheckout"/>
+                    </methods>
+                  </class>
+                  <class name="DemoWebShop.Tests.OrderTests">
+                    <methods>
+                      <include name="validCheckout"/>
+                    </methods>
+                  </class>
+
+
+        </classes>
+
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
