@@ -63,8 +63,12 @@ This will open the Allure report in your default browser.
 ## Features ✨
 
 - **Login Tests**: Verifying user login functionality 🔑
+- **Register Tests**: Validating user registration process and form validation 📝
 - **Search Functionality Tests**: Validating product search on the platform 🔍
+- **Add to Cart Tests**: Verifying the functionality of adding products to the shopping cart 🛒
 - **Checkout Flow Tests**: Ensuring smooth product checkout process 💳
+- **Order Placement Tests**: Ensuring that orders can be placed successfully and confirmation is shown 📦
+- **Order Tracking Tests**: Verifying order tracking functionality after an order has been placed 🚚
 - **Cross-browser Testing**: Run tests across different browsers like Chrome, Firefox, and Edge 🌐
 - **Data-Driven Tests**: Supporting different test data inputs via Excel or CSV files 🗂️
 
