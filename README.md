@@ -9,9 +9,8 @@ This project is an automation testing suite for the DemoWebShop application. The
 - **Testing Framework**: [Selenium WebDriver](https://www.selenium.dev/) 🖥️
 - **Programming Language**: [Java](https://www.oracle.com/java/) ☕
 - **Build Tool**: [Maven](https://maven.apache.org/) 🛠️
-- **Test Runner**: [JUnit](https://junit.org/) ✅
+- **Test Runner**: [TestNG](https://testng.org/) ✅
 - **Reporting**: [Allure](https://allure.qatools.ru/) 📑
-- **CI/CD**: [GitHub Actions](https://github.com/features/actions) 🚀
 - **Version Control**: [Git](https://git-scm.com/) 🔄
 
 ## Setup and Installation 📝
