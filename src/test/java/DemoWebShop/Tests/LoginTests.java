@@ -3,21 +3,29 @@ package DemoWebShop.Tests;
 import DemoWebShop.Data.DataDriven;
 import DemoWebShop.PageObjects.LoginPage;
 import DemoWebShop.TestComponents.BaseTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Step;
+import io.qameta.allure.testng.AllureTestNg;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
-
+@Listeners(AllureTestNg.class)
 public class LoginTests extends BaseTest {
 
 
     // json data HashMap<String, String> input getDataJson
     // excel String param1, String param2, String param3 getDataExcel
     //Test case1: Verify Login with valid email and valid password
-    @Test(dataProvider = "validLogin", enabled = true, priority = 1)
+
+    @Test(dataProvider = "validLogin", priority = 1)
+    @Step("test")
+    @Severity(SeverityLevel.CRITICAL)
     public void validLogin(String email, String password) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         LoginPage loginPage = homePage.goToLogin();
@@ -28,7 +36,7 @@ public class LoginTests extends BaseTest {
 
     //Test case2: Verify Login with unregisterd email
     //Tes case3:Verify Login with wrong password
-    @Test(dataProvider = "inValidLogin", enabled = true, priority = 2)
+    @Test(dataProvider = "inValidLogin", priority = 2)
     public void inValidLogin(String email, String password) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
         LoginPage loginPage = homePage.goToLogin();

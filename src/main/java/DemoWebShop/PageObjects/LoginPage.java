@@ -1,11 +1,13 @@
 package DemoWebShop.PageObjects;
 
 import WebShop.AbstractComponents.AbstractComponent;
+import io.qameta.allure.Allure;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
 
 public class LoginPage extends AbstractComponent {
 	WebDriver driver;
@@ -31,6 +33,7 @@ public class LoginPage extends AbstractComponent {
 
 
 	public void loginApplication(String email, String password) {
+		Allure.step("Login with email:"+ email +" and password:"+password);
 		userEmail.sendKeys(email);
 		userPassword.sendKeys(password);
 		logInButton.click();

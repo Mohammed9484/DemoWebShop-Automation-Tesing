@@ -3,13 +3,16 @@ package DemoWebShop.Tests;
 import DemoWebShop.Data.DataDriven;
 import DemoWebShop.PageObjects.ProductPage;
 import DemoWebShop.TestComponents.BaseTest;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+@Listeners({io.qameta.allure.testng.AllureTestNg.class})
 
 public class SearchTests extends BaseTest {
 
@@ -17,6 +20,7 @@ public class SearchTests extends BaseTest {
     // json data HashMap<String, String> input getDataJson
     // excel String param1, String param2, String param3 getDataExcel
     @Test(dataProvider = "validSearch", enabled = true, priority = 1)
+    @Step("Searching for: {productName}")
     public void validSearch(String productName) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
        homePage.searchAndSelect(productName,"laptop");

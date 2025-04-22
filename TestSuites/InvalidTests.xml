@@ -6,7 +6,7 @@
         <listener class-name="DemoWebShop.TestComponents.Listeners"/>
     </listeners>
 
-    <test thread-count="2" parallel="classes" name="Invalid Tests">
+    <test thread-count="3" parallel="classes" name="Invalid Tests">
         <classes>
             <class name="DemoWebShop.Tests.RegistrationTests">
                 <methods>

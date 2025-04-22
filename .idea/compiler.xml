@@ -6,6 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+      </profile>
+      <profile name="Annotation profile for SeleniumFrameworkDesign" enabled="true">
+        <sourceOutputDir name="test-outputs/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="test-outputs/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
         <module name="SeleniumFrameworkDesign" />
       </profile>
     </annotationProcessing>
